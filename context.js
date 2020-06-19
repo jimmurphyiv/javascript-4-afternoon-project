@@ -18,12 +18,18 @@
 */
 
 //Code Here
-let User = {
-  this.username = username;
-  this.email = email;
-  this.getUsername = getUsername()
-  return this.username;
-}
+ const user  = {
+  username = 'username',
+  email = 'email',
+  getUsername = function() {
+    return (
+      this.username 
+    )
+  }
+ }
+
+
+  
 
 
 ////////// PROBLEM 2 //////////
@@ -66,7 +72,7 @@ let who = {
 }
 
 //Code Here
-const whoSaysHi = sayHi.bind(who.name, 'greeting');
+const whoSaysHi = sayHi.bind(who.name, sayHi());
 ////////// PROBLEM 4 //////////
 
 /*
@@ -78,7 +84,7 @@ function whatIsThis() {
 }
 
 // uncomment the line below and tell us what the context of "this" is for whatIsThis()
-let context1 = ('snake plant');
+let context1 = `snake plant`;
 
 let product = {
   name: 'snake plant',
