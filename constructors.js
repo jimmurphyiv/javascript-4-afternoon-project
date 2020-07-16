@@ -15,10 +15,12 @@
 */
 
 // Code here
-function CarFactory(make, model){
-  this.make = make;
+function Employee(make, model) {
+  this.make= make;
   this.model = model;
 }
+
+
 ////////// PROBLEM 2 //////////
 
 // Do not edit the code below.
@@ -60,17 +62,16 @@ function Employee(name, email, hireDate) {
   */
   
   // Code here
-  function Car(make, model, year){
+  function Car(make, model, year) {
     this.make = make;
     this.model = model;
     this.year = year;
     this.move = 0;
-      this.moveCar = function(){
-        this.move += 10;
-      return this.move;
-  } 
-
-}
+    this.moveCar = function () {
+      return this.move += 10;
+  
+    }
+  }
     
   
 
@@ -92,9 +93,17 @@ function Employee(name, email, hireDate) {
   }
   
   //Code here
-  Movie.prototype.changeRating = function(newRating){
-    return this.rating + newRating / 2;
+  Movie.prototype.changeRating = function (rating) {
+
+    if (rating > 0 && rating < 101) {
+      this.rating = (this.rating + rating) / 2
+  
+    }
+    console.log(this.rating);
+    return this.rating;
   }
+  let twister = new Movie('twister', 'shitty', 6.9);
+  console.log(twister.changeRating(7.8));
   ////////// PROBLEM 5 //////////
   
   // Write a constructor function called User. This function should take in 4 parameters called name, age, email, and savedPosts
@@ -114,13 +123,18 @@ function Employee(name, email, hireDate) {
     this.email = email;
     this.savedPosts = savedPosts;
   }
-    User.prototype.addSavedPost = function(id, title, rating){
-      return this.savedPosts.push({id, title, rating});   
-    }
-    
 
-    
-    
+  User.prototype.addSavedPost = function (id, title, rating) {
+    let newObj = {
+      id,
+      title,
+      rating,
+    }
+    this.savedPosts.push(newObj)
+  }
+  
+  let b = new User('vv', 3, '33', ['3', 3, 4]);
+  b.addSavedPost(3, 'thanks', 4);
   
   ////////// PROBLEM 6 //////////
   
@@ -129,8 +143,11 @@ function Employee(name, email, hireDate) {
   // representing the post id. Use this id to find and remove the matching object in the savedPosts array.
   
   // Code here
-  User.prototype.removeSavedPost = function(id){
-    return this.savedPosts.splice({id});
+  User.prototype.removeSavedPost = function (id) {
+  let index = this.savedPosts.findIndex(e => {
+    return e.id === id
+  });
+  this.savedPosts.splice(index, 1)
   }
   ////////// PROBLEM 7 //////////
   
@@ -141,6 +158,11 @@ function Employee(name, email, hireDate) {
   //update it's rating score with the new rating parameter.
   
   // Code here
-  User.prototype.changePostRating = function(id, rating,){
-    return this.savedPosts.
+  User.prototype.changePostRating = function (id, rating) {
+   let index = this.savedPosts.findIndex(element => {
+      return element.id === id
+    })
+    this.savedPosts[index].rating = rating
+    console.log((this.savedPosts))
   }
+  b.changePostRating(33, 420);
